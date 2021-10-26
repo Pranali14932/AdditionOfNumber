@@ -14,7 +14,7 @@ public class MathDemo {
 		}
 		
 		private static final Logger logger = LogManager.getLogger(MathDemo.class); 
-		public static void main(String args[]){
+		public static void main(String[] args){
 			MathDemo mathDemo = new MathDemo();
 			int sum = mathDemo.add(5,4);
 			int diff = mathDemo.subtract(9, 3);
