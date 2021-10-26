@@ -22,13 +22,13 @@ public void tearDown() throws Exception {
 @Test
 public void testAdd() {
 int result = mathDemo.add(5,3);
-assertEquals(result,8);
+assertEquals(8,result);
 }
  
 @Test
 public void testSubtract() {
 int result = mathDemo.subtract(10,4);
-assertEquals(result,6);
+assertEquals(6,result);
 }
  
 }
