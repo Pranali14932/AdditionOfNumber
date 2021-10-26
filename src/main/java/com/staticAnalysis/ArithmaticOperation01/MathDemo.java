@@ -1,4 +1,7 @@
 package com.staticAnalysis.ArithmaticOperation01;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class MathDemo {
 	public int add(int a,int b){
