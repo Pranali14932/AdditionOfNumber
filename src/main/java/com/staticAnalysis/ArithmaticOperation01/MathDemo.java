@@ -10,7 +10,4 @@ public class MathDemo {
 		int c=a-b;
 		return c;
 		}
-		public static void main(String[] args){
-			
-			}
 }
