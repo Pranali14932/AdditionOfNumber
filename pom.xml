@@ -38,6 +38,15 @@
       <version>1.5.1</version>
       <optional>true</optional>
     </dependency>
+    
+    
+    <!-- https://mvnrepository.com/artifact/maven.log4-clj-layout/log4-clj-layout -->
+<dependency>  
+    <groupId>log4j</groupId>  
+    <artifactId>log4j</artifactId>  
+    <version>1.2.17</version>  
+</dependency>  
+    
   </dependencies>
 
 
