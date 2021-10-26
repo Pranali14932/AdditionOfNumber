@@ -29,7 +29,7 @@ public class MathTest {
 	@Test
 	public void testSubtract() {
 	int result = mathDemo.subtract(10,4);
-	assertEquals(result,6);
+	assertEquals(6,result);
 	}
 	 
 	}
