@@ -2,12 +2,10 @@ package com.staticAnalysis.ArithmaticOperation01;
 
 public class MathDemo {
 	public int add(int a,int b){
-		int c=a+b;
-		return c;
+		return a+b;
 		}
 		 
 		public int subtract(int a,int b){
-		int c=a-b;
-		return c;
+		return a-b;
 		}
 }
