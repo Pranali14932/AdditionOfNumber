@@ -18,13 +18,10 @@ public class MathDemo {
 			MathDemo mathDemo = new MathDemo();
 			int sum = mathDemo.add(5,4);
 			int diff = mathDemo.subtract(9, 3);
-			System.out.println("Sum is "+sum);
-			System.out.println("Difference is "+diff);
-
-			//log.debug("This is an debug message"); 
+			
 			
 			BasicConfigurator.configure();  
-			  logger.info("Hello world");  
+
 			  logger.info("we are in logger info mode"); 
 			  logger.info("Sum is "+sum);
 			  logger.info("Difference is "+diff);
