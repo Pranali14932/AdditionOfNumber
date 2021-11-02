@@ -11,12 +11,12 @@ pipeline {
                  }
      
             }
-             stage('Build Code') {
-            steps{
-                    sh "mvn clean install sonar:sonar"
-                 }
+//              stage('Build Code') {
+//             steps{
+//                     sh "mvn clean install sonar:sonar"
+//                  }
      
-            }
+//             }
           
            stage ('Build') {
     	    steps {
