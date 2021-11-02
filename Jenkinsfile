@@ -5,18 +5,18 @@ pipeline {
         }
     stages {
       
-         stage('clonning from GIT') {
-            steps{
-                git branch: 'main', url: 'https://github.com/Pranali14932/AdditionOfNumber.git'
-                 }
-     
-            }
-//              stage('Build Code') {
+//          stage('clonning from GIT') {
 //             steps{
-//                     sh "mvn clean install sonar:sonar"
+//                 git branch: 'main', url: 'https://github.com/Pranali14932/AdditionOfNumber.git'
 //                  }
      
 //             }
+             stage('Build Code') {
+            steps{
+                    sh "mvn clean install sonar:sonar"
+                 }
+     
+            }
           
            stage ('Build') {
     	    steps {
