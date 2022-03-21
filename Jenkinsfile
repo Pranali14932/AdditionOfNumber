@@ -67,7 +67,7 @@ pipeline{
                 // withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u omjai1010 -p 0303@Chetan'
                 // }  
-                 sh 'docker push devopshint/my-app-1.0'
+                 sh 'docker push omjai1010/my-app-1.0'
                 }
             }
         }
