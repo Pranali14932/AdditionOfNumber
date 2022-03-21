@@ -1,3 +1,4 @@
+//*********************************Gradle Build**************************//
 // pipeline {
 //     agent any
 //         environment{
@@ -38,7 +39,7 @@
 
 
 
-
+//*************************Docker Build *********************************//
 pipeline {
 environment {
 registry = "YourDockerhubAccount/YourRepository"
