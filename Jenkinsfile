@@ -43,12 +43,12 @@
 pipeline{
     agent any
     tools {
-        maven 'MAVEN'
+        maven 'Maven'
     }
     stages {
         stage('Build Maven') {
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 'https://github.com/MastekLimited/SteelThreading/new/main/springboot-backend']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 'https://github.com/Pranali14932/AdditionOfNumber']]])
 
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 
@@ -65,7 +65,7 @@ pipeline{
             steps {
                 script {
                  withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u devopshint -p ${dockerhubpwd}'
+                    sh 'docker login -u omjai1010 -p 0303@Chetan'
                  }  
                  sh 'docker push devopshint/my-app-1.0'
                 }
