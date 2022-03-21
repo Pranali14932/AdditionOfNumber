@@ -40,40 +40,36 @@
 
 
 //*************************Docker Build *********************************//
-pipeline {
-environment {
-registry = "YourDockerhubAccount/YourRepository"
-registryCredential = 'dockerhub_id'
-dockerImage = ''
-}
-agent any
-stages {
- stage('clonning from GIT') {
-             steps{
-                 git branch: 'main', url: 'https://github.com/Pranali14932/AdditionOfNumber.git'
-                  }
-     
-             }
-stage('Building our image') {
-steps{
-script {
-dockerImage = docker.build registry + ":$BUILD_NUMBER"
-}
-}
-}
-stage('Deploy our image') {
-steps{
-script {
-docker.withRegistry( '', registryCredential ) {
-dockerImage.push()
-}
-}
-}
-}
-stage('Cleaning up') {
-steps{
-sh "docker rmi $registry:$BUILD_NUMBER"
-}
-}
-}
+pipeline{
+    agent any
+    tools {
+        maven 'MAVEN'
+    }
+    stages {
+        stage('Build Maven') {
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'devopshint', url: 'https://github.com/MastekLimited/SteelThreading/new/main/springboot-backend']]])
+
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                  sh 'docker build -t devopshint/my-app-1.0 .'
+                }
+            }
+        }
+        stage('Deploy Docker Image') {
+            steps {
+                script {
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u devopshint -p ${dockerhubpwd}'
+                 }  
+                 sh 'docker push devopshint/my-app-1.0'
+                }
+            }
+        }
+    }
 }
