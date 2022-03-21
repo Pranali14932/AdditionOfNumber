@@ -64,9 +64,9 @@ pipeline{
         stage('Deploy Docker Image') {
             steps {
                 script {
-                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                // withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u omjai1010 -p 0303@Chetan'
-                 }  
+                // }  
                  sh 'docker push devopshint/my-app-1.0'
                 }
             }
