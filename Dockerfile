@@ -12,8 +12,21 @@
 #     RUN usermod -aG docker jenkins
 
 
-FROM openjdk
-COPY target/*.jar /
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
+# FROM openjdk
+# COPY target/*.jar /
+# EXPOSE 8080
+# ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
 
+
+
+FROM openjdk:16-alpine3.13
+
+WORKDIR /app
+
+COPY .mvn/ .mvn
+COPY mvnw pom.xml ./
+RUN ./mvnw dependency:go-offline
+
+COPY src ./src
+
+CMD ["./mvnw", "spring-boot:run"]
