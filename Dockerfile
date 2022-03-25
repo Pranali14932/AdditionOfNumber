@@ -12,11 +12,8 @@
 #     RUN usermod -aG docker jenkins
 
 
-# FROM openjdk
-# COPY target/*.jar /
-# EXPOSE 8080
-# ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
-
 FROM openjdk
-COPY target/ACRDemo-example-1.0-SNAPSHOT.jar /opt/app/app.jar
-CMD ["java", "-jar", "/opt/app/app.jar"]
+COPY target/*.jar /
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
+
