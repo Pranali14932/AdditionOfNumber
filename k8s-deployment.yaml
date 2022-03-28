@@ -1,39 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gs-spring-boot-docker
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: gs-spring-boot-docker
+    spec:
+      containers:
+      - image: myakacrregistry.azurecr.io/myakacrregistry/my-java-app:latest
+        name: gs-spring-boot-docker
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+        - name: regsecret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myakacrregistry
-  labels:
-    app: myakacrregistry
+  name: gs-spring-boot-docker
 spec:
-  type: NodePort
-  selector:
-    app: myakacrregistry
   ports:
   - protocol: TCP
-    port: 8010
-    name: http
-
----
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: myakacrregistry
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: myakacrregistry
-    spec:
-      containers:
-      - name: myakacrregistry
-        image: myakacrregistry/my-java-app:latest
-        ports:
-        - containerPort: 8010
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8010
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
+    port: 80
+    targetPort: 8080
+  selector:
+    app: gs-spring-boot-docker
+  type: LoadBalancer
